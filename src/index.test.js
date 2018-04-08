@@ -15,7 +15,7 @@ describe("index.html",()=>{
     const index=fs.readFileSync('./src/index.html','utf-8'); //reading html file to hold into memory with index variable
     jsdom.env(index,function(err,window){ //Setting jsdom environment to work with virtual DOM in memory using index variable;window here represent a browser window
       const h1=window.document.getElementsByTagName('h1')[0];
-      expect(h1.innerHTML).to.equal("Hello World!");
+      expect(h1.innerHTML).to.equal("Users");
       done(); //In case of async function call we need to pass done param to tell mocha that we have done evaluating test and it should again refresh dom
       window.close();
     });

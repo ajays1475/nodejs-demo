@@ -1,21 +1,19 @@
+//This is server.js file for production build on Local
 import express from 'express';
 import path from 'path';
 import open from 'open';
-import webpack from 'webpack';
-import config from '../webpack.config.dev';
+import compression from 'compression'; //It is used to compress app files while sending over n/w using gzip compression
+
+/* eslint-disable no-console */
 
 const port = 8080;
 const app = express();
-const compiler = webpack(config);
 
-/* eslint-disable no-console */
-app.use(require('webpack-dev-middleware')(compiler, {
-noInfo : true,
-publicPath : config.output.publicPath
-}));
+app.use(compression());
+app.use(express.static('dist')); //Allowing express to serve static files from dist folder
 
 app.get('/',function(req,res){
-  res.sendfile(path.join(__dirname, '../src/index.html'));
+  res.sendfile(path.join(__dirname, '../dist/index.html'));
 });
 
 app.get('/users',function(req,res){
