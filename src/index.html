@@ -1,6 +1,15 @@
+<!-- This is template for index.html
+     It uses ejs and htnlWebpackPlugin to generate a different index.html for each environemnt.
+     The htmlWebpackPlugin will dynamically add references to scripts and styles that it bundles
+     to this file.
+-->
 <!DOCTYPE html>
 <html>
 <head>
+  <% if(htmlWebpackPlugin.options.trackJSToken) { %>
+  <script type="text/javascript">window._trackJs = { token: '<%=htmlWebpackPlugin.options.trackJSToken%>' };</script>
+  <script type="text/javascript" src="https://cdn.trackjs.com/releases/current/tracker.js"></script>
+  <% } %>
   <meta charset="utf-8" />
 </head>
 <body>
