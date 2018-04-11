@@ -4,7 +4,7 @@ Otherwise for prod it will return root (/) url
 */
 
 export default function getBaseUrl() {
-  return getQueryStringParameterByName('useMockApi') ? 'http://localhost:3000/' : '/';
+  return getQueryStringParameterByName('useMockApi') ? 'http://localhost:3000/' : 'https://thawing-tor-95227.herokuapp.com/';
 }
 
 function getQueryStringParameterByName(name,url){
